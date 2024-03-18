@@ -1,0 +1,27 @@
+<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40"><head><!--[if gte mso 9]><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet><x:Name>Worksheet</x:Name><x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions></x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]--></head><body><table>
+    
+    
+
+   
+   <thead>      
+      <tr>
+         <th aria-label="Date" data-stat="date_game" scope="col" class=" poptip sort_default_asc center">Date</th>
+         <th aria-label="Start (ET)" data-stat="game_start_time" scope="col" class=" poptip center">Start (ET)</th>
+         <th aria-label="Visitor/Neutral" data-stat="visitor_team_name" scope="col" class=" poptip sort_default_asc center">Visitor/Neutral</th>
+         <th aria-label="Visitor Points" data-stat="visitor_pts" scope="col" class=" poptip center" data-tip="Points">PTS</th>
+         <th aria-label="Home/Neutral" data-stat="home_team_name" scope="col" class=" poptip sort_default_asc center">Home/Neutral</th>
+         <th aria-label="Home Points" data-stat="home_pts" scope="col" class=" poptip center">PTS</th>
+         <th aria-label="&nbsp;" data-stat="box_score_text" scope="col" class=" poptip sort_default_asc center">&nbsp;</th>
+         <th aria-label="&nbsp;" data-stat="overtimes" scope="col" class=" poptip center">&nbsp;</th>
+         <th aria-label="Attend." data-stat="attendance" scope="col" class=" poptip center">Attend.</th>
+         <th aria-label="Arena" data-stat="arena_name" scope="col" class=" poptip sort_default_asc center">Arena</th>
+         <th aria-label="Notes" data-stat="game_remarks" scope="col" class=" poptip sort_default_asc show_partial_when_sorting center">Notes</th>
+      </tr>
+      </thead>
+<tbody><tr data-row="0"><th scope="row" class="left " data-stat="date_game" csk="202306010DEN">Thu, Jun 1, 2023</th><td class="right " data-stat="game_start_time">8:30p</td><td class="left " data-stat="visitor_team_name" csk="MIA.202306010DEN">Miami Heat</td><td class="right " data-stat="visitor_pts">93</td><td class="left " data-stat="home_team_name" csk="DEN.202306010DEN">Denver Nuggets</td><td class="right " data-stat="home_pts">104</td><td class="center " data-stat="box_score_text">Box Score</td><td class="center iz" data-stat="overtimes"></td><td class="right " data-stat="attendance">19,528</td><td class="left " data-stat="arena_name">Ball Arena</td><td class="left iz" data-stat="game_remarks"></td></tr>
+<tr data-row="1"><th scope="row" class="left " data-stat="date_game" csk="202306040DEN">Sun, Jun 4, 2023</th><td class="right " data-stat="game_start_time">8:00p</td><td class="left " data-stat="visitor_team_name" csk="MIA.202306040DEN">Miami Heat</td><td class="right " data-stat="visitor_pts">111</td><td class="left " data-stat="home_team_name" csk="DEN.202306040DEN">Denver Nuggets</td><td class="right " data-stat="home_pts">108</td><td class="center " data-stat="box_score_text">Box Score</td><td class="center iz" data-stat="overtimes"></td><td class="right " data-stat="attendance">19,537</td><td class="left " data-stat="arena_name">Ball Arena</td><td class="left iz" data-stat="game_remarks"></td></tr>
+<tr data-row="2"><th scope="row" class="left " data-stat="date_game" csk="202306070MIA">Wed, Jun 7, 2023</th><td class="right " data-stat="game_start_time">8:30p</td><td class="left " data-stat="visitor_team_name" csk="DEN.202306070MIA">Denver Nuggets</td><td class="right " data-stat="visitor_pts">109</td><td class="left " data-stat="home_team_name" csk="MIA.202306070MIA">Miami Heat</td><td class="right " data-stat="home_pts">94</td><td class="center " data-stat="box_score_text">Box Score</td><td class="center iz" data-stat="overtimes"></td><td class="right " data-stat="attendance">20,019</td><td class="left " data-stat="arena_name">Kaseya Center</td><td class="left iz" data-stat="game_remarks"></td></tr>
+<tr data-row="3"><th scope="row" class="left " data-stat="date_game" csk="202306090MIA">Fri, Jun 9, 2023</th><td class="right " data-stat="game_start_time">8:30p</td><td class="left " data-stat="visitor_team_name" csk="DEN.202306090MIA">Denver Nuggets</td><td class="right " data-stat="visitor_pts">108</td><td class="left " data-stat="home_team_name" csk="MIA.202306090MIA">Miami Heat</td><td class="right " data-stat="home_pts">95</td><td class="center " data-stat="box_score_text">Box Score</td><td class="center iz" data-stat="overtimes"></td><td class="right " data-stat="attendance">20,184</td><td class="left " data-stat="arena_name">Kaseya Center</td><td class="left iz" data-stat="game_remarks"></td></tr>
+<tr data-row="4"><th scope="row" class="left " data-stat="date_game" csk="202306120DEN">Mon, Jun 12, 2023</th><td class="right " data-stat="game_start_time">8:30p</td><td class="left " data-stat="visitor_team_name" csk="MIA.202306120DEN">Miami Heat</td><td class="right " data-stat="visitor_pts">89</td><td class="left " data-stat="home_team_name" csk="DEN.202306120DEN">Denver Nuggets</td><td class="right " data-stat="home_pts">94</td><td class="center " data-stat="box_score_text">Box Score</td><td class="center iz" data-stat="overtimes"></td><td class="right " data-stat="attendance">19,537</td><td class="left " data-stat="arena_name">Ball Arena</td><td class="left iz" data-stat="game_remarks"></td></tr>
+
+</tbody></table></body></html>
