@@ -59,3 +59,29 @@ def remove_asterisks_from_column(df, column_name):
 #             clean_headers(file_path)
 
 # convert_xls()
+
+
+import pandas as pd
+
+def load_csv_with_multiheader(file_path, header_row=0, skip_rows=None):
+    """
+    Load a CSV file that has multiple header rows, standardizing team names and skipping unnecessary headers.
+    
+    :param file_path: Path to the CSV file.
+    :param header_row: The index of the row to use as the header (0-based).
+    :param skip_rows: Rows to skip after the header_row.
+    :return: A pandas DataFrame with the loaded data.
+    """
+    # Load the CSV, skipping rows as necessary
+    df = pd.read_csv(file_path, header=header_row, skiprows=skip_rows)
+    
+    # Standardize team names by removing asterisks
+    for col in df.columns:
+        if 'team' in col.lower():  # Adjust the condition based on your column naming
+            df[col] = df[col].str.replace('*', '', regex=False)
+    
+    return df
+
+# Example usage
+file_path = 'path/to/your/csvfile.csv'
+df = load_csv_with_multiheader(file_path, header_row=0, skip_rows=[1])  # Adjust parameters as needed
