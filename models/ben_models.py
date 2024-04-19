@@ -20,8 +20,9 @@ data = pd.read_excel('../data/2023/encoded_allstats.xlsx')
 
 # Columns to remove that might contain outcome-related information
 necessary = ['+/-', 'OFFRTG', 'DEFRTG', 'NETRTG', 'PIE', 'PTS', 'FGM', 'FTM', '3PM', 'FGA', 'FTA', '3PA']
-columns_to_remove = necessary + ['TS%', 'EFG%', 'REB%', 'FG%', 'AST.1', 'AST', 'DREB', 'REB', '3P%', 'AST/TO']
 
+# columns_to_remove = necessary + ['TEAM_encoded', 'OPPONENT_encoded', 'TS%', 'EFG%', 'REB%', 'FG%', 'AST.1', 'AST', 'DREB', 'REB', '3P%', 'AST/TO']
+columns_to_remove = necessary
 # Drop these columns from the dataset along with the target variable 'W/L'
 X_filtered = data.drop(columns_to_remove + ['W/L'], axis=1)
 y = data['W/L']
