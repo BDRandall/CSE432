@@ -19,7 +19,7 @@ import seaborn as sns
 data = pd.read_excel('../data/2023/encoded_allstats.xlsx')
 
 # Columns to remove that might contain outcome-related information
-columns_to_remove = ['TEAM_encoded', 'OPPONENT_encoded', '+/-', 'OFFRTG', 'DEFRTG', 'NETRTG', 'PIE', 'PTS', 'FGM', 'FTM', '3PM', 'FGA', 'FTA', '3PA', 'TS%', 'EFG%', 'REB%', 'FG%', 'AST.1', 'AST', 'DREB', 'REB', '3P%', 'AST/TO']
+columns_to_remove = ['+/-', 'OFFRTG', 'DEFRTG', 'NETRTG', 'PIE', 'PTS', 'FGM', 'FTM', '3PM', 'FGA', 'FTA', '3PA', 'TS%', 'EFG%', 'REB%', 'FG%', 'AST.1', 'AST', 'DREB', 'REB', '3P%', 'AST/TO']
 
 # Drop these columns from the dataset along with the target variable 'W/L'
 X_filtered = data.drop(columns_to_remove + ['W/L'], axis=1)
@@ -76,14 +76,30 @@ def logisitic_reg():
 
 
 def ada_boost():
-    ada = AdaBoostClassifier()
+    ada = AdaBoostClassifier(n_estimators=100, learning_rate=1.0, algorithm="SAMME", random_state=42)
     ada.fit(X_train_scaled, y_train)
+    # Predict the test set results and evaluate the model
+    y_pred = ada.predict(X_test_scaled)
+    accuracy = accuracy_score(y_test, y_pred)
+    report = classification_report(y_test, y_pred)
+    print(f'Accuracy: {accuracy}')
+    print('Classification Report:')
+    print(report)
 
 
 def grad_boost():
-    gb = GradientBoostingClassifier()
+    gb = GradientBoostingClassifier(n_estimators=100, learning_rate=1.0, random_state=42)
     gb.fit(X_train_scaled, y_train)
+    # Predict the test set results and evaluate the model
+    y_pred = gb.predict(X_test_scaled)
+    accuracy = accuracy_score(y_test, y_pred)
+    report = classification_report(y_test, y_pred)
+    print(f'Accuracy: {accuracy}')
+    print('Classification Report:')
+    print(report)
+
+
 
 logisitic_reg()
-# ada_boost()
-# grad_boost()
+ada_boost()
+grad_boost()
