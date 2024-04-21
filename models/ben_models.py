@@ -4,7 +4,7 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score, classification_report
-from sklearn.preprocessing import StandardScaler
+from sklearn.preprocessing import StandardScaler, MinMaxScaler
 from sklearn.ensemble import AdaBoostClassifier, GradientBoostingClassifier
 
 import matplotlib.pyplot as plt
@@ -19,7 +19,7 @@ import seaborn as sns
 data = pd.read_excel('../data/2023/encoded_allstats.xlsx')
 
 # Columns to remove that might contain outcome-related information
-necessary = ['+/-', 'OFFRTG', 'DEFRTG', 'NETRTG', 'PIE', 'PTS', 'FGM', 'FTM', '3PM', 'FGA', 'FTA', '3PA']
+necessary = ['+/-', 'OFFRTG', 'DEFRTG', 'NETRTG', 'PIE', 'PTS', 'FGM', 'FTM', '3PM', 'FGA', 'FTA', '3PA', 'TEAM_encoded', 'OPPONENT_encoded', 'AST.1']
 
 # columns_to_remove = necessary + ['TEAM_encoded', 'OPPONENT_encoded', 'TS%', 'EFG%', 'REB%', 'FG%', 'AST.1', 'AST', 'DREB', 'REB', '3P%', 'AST/TO']
 columns_to_remove = necessary
