@@ -36,6 +36,26 @@ X_train_scaled = scaler.fit_transform(X_train)
 X_test_scaled = scaler.transform(X_test)
 
 
+
+correlation_matrix = pd.DataFrame(X_train_scaled, columns=X_train.columns).corr()
+
+# Set up the matplotlib figure
+plt.figure(figsize=(12, 10))
+
+# Draw the heatmap with the mask and correct aspect ratio
+sns.heatmap(correlation_matrix, cmap='coolwarm', annot=True, fmt=".2f", linewidths=.5, cbar_kws={"shrink": .5})
+
+# Adding title and labels
+plt.title('Correlation Matrix Heatmap')
+plt.xlabel('Predictor Variables')
+plt.ylabel('Predictor Variables')
+
+# Save the figure if you want to use it in a report or presentation
+plt.savefig('correlation_matrix_heatmap.png')
+
+# Show plot
+# plt.show()
+
 def logisitic_reg():
 
     # Train the logistic regression model
@@ -46,9 +66,10 @@ def logisitic_reg():
     y_pred = model.predict(X_test_scaled)
     accuracy = accuracy_score(y_test, y_pred)
     report = classification_report(y_test, y_pred)
+    print("LOGISITC REGRESSION")
     print(f'Accuracy: {accuracy}')
-    print('Classification Report:')
-    print(report)
+    # print('Classification Report:')
+    # print(report)
     
 
     feature_names = X_filtered.columns.tolist()
@@ -84,9 +105,10 @@ def ada_boost():
     y_pred = ada.predict(X_test_scaled)
     accuracy = accuracy_score(y_test, y_pred)
     report = classification_report(y_test, y_pred)
+    print("ADA BOOST")
     print(f'Accuracy: {accuracy}')
-    print('Classification Report:')
-    print(report)
+    # print('Classification Report:')
+    # print(report)
 
 
 def grad_boost():
@@ -96,9 +118,10 @@ def grad_boost():
     y_pred = gb.predict(X_test_scaled)
     accuracy = accuracy_score(y_test, y_pred)
     report = classification_report(y_test, y_pred)
+    print("GRADIENT BOOST")
     print(f'Accuracy: {accuracy}')
-    print('Classification Report:')
-    print(report)
+    # print('Classification Report:')
+    # print(report)
 
 
 
