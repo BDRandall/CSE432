@@ -25,7 +25,9 @@ data = pd.read_excel('../data/2023/encoded_allstats.xlsx')
 # Columns to remove that might contain outcome-related information
 necessary = ['W/L', '+/-', 'OFFRTG', 'DEFRTG', 'NETRTG', 'PIE', 'PTS', 'FGM', 'FTM', '3PM', 'FGA', 'FTA', '3PA', 'TEAM_encoded', 'OPPONENT_encoded', 'AST.1']
 
+# Columns that are necessary + columns that cause multicollinearity
 columns_to_remove = necessary + ['OREB', 'DREB', 'REB', 'TOV', 'EFG%', 'AST', 'TS%']
+
 # columns_to_remove = necessary
 # Drop these columns from the dataset along with the target variable 'W/L'
 X_filtered = data.drop(columns_to_remove, axis=1)
