@@ -7,6 +7,8 @@ from sklearn.metrics import accuracy_score, classification_report
 from sklearn.preprocessing import StandardScaler, MinMaxScaler
 from sklearn.ensemble import AdaBoostClassifier, GradientBoostingClassifier
 from sklearn.model_selection import cross_val_score, GridSearchCV
+from sklearn.inspection import permutation_importance
+
 
 
 import matplotlib.pyplot as plt
@@ -45,47 +47,48 @@ X_test_scaled = scaler.transform(X_test)
 ############################
 #### CORRELATION MATRIX ####
 ############################
+def corr_matrix():
+    
+    correlation_matrix = pd.DataFrame(X_train_scaled, columns=X_train.columns).corr()
 
-correlation_matrix = pd.DataFrame(X_train_scaled, columns=X_train.columns).corr()
+    # Set up the matplotlib figure
+    plt.figure(figsize=(12, 10))
 
-# Set up the matplotlib figure
-plt.figure(figsize=(12, 10))
+    # Draw the heatmap with the mask and correct aspect ratio
+    sns.heatmap(correlation_matrix, cmap='coolwarm', annot=True, fmt=".2f", linewidths=.5, cbar_kws={"shrink": .5})
 
-# Draw the heatmap with the mask and correct aspect ratio
-sns.heatmap(correlation_matrix, cmap='coolwarm', annot=True, fmt=".2f", linewidths=.5, cbar_kws={"shrink": .5})
+    # Adding title and labels
+    plt.title('Correlation Matrix Heatmap')
+    plt.xlabel('Predictor Variables')
+    plt.ylabel('Predictor Variables')
 
-# Adding title and labels
-plt.title('Correlation Matrix Heatmap')
-plt.xlabel('Predictor Variables')
-plt.ylabel('Predictor Variables')
-
-# Save the figure if you want to use it in a report or presentation
-plt.savefig('correlation_matrix_heatmap.png')
+    # Save the figure if you want to use it in a report or presentation
+    plt.savefig('correlation_matrix_heatmap.png')
 
 
 #########################
 #### VIF CALCULATION ####
 #########################
+def vif():
+    # Calculate VIF for each feature in the training set
+    vif_data = pd.DataFrame()
+    vif_data['feature'] = X_train.columns
+    vif_data['VIF'] = [variance_inflation_factor(X_train_scaled, i) for i in range(X_train_scaled.shape[1])]
 
-# Calculate VIF for each feature in the training set
-vif_data = pd.DataFrame()
-vif_data['feature'] = X_train.columns
-vif_data['VIF'] = [variance_inflation_factor(X_train_scaled, i) for i in range(X_train_scaled.shape[1])]
+    # Display the VIF for each feature
+    print("VIF for each feature:")
+    print(vif_data)
 
-# Display the VIF for each feature
-print("VIF for each feature:")
-print(vif_data)
+    # Identify features with an infinite VIF
+    infinite_vif_features = vif_data[vif_data['VIF'] == np.inf]['feature'].tolist()
+    print("\nFeatures with Infinite VIF (suggesting perfect multicollinearity):")
+    print(infinite_vif_features)
 
-# Identify features with an infinite VIF
-infinite_vif_features = vif_data[vif_data['VIF'] == np.inf]['feature'].tolist()
-print("\nFeatures with Infinite VIF (suggesting perfect multicollinearity):")
-print(infinite_vif_features)
-
-# Set a VIF threshold to identify features with high multicollinearity
-vif_threshold = 10
-high_vif_features = vif_data[vif_data['VIF'] > vif_threshold]['feature'].tolist()
-print("\nFeatures with VIF greater than threshold of 10:")
-print(high_vif_features)
+    # Set a VIF threshold to identify features with high multicollinearity
+    vif_threshold = 10
+    high_vif_features = vif_data[vif_data['VIF'] > vif_threshold]['feature'].tolist()
+    print("\nFeatures with VIF greater than threshold of 10:")
+    print(high_vif_features)
 
 
 ############################
@@ -128,6 +131,20 @@ def logisitic_reg():
     y_pred = grid_search.predict(X_test_scaled)
     test_accuracy = accuracy_score(y_test, y_pred)
     print(f'Test Set Accuracy: {test_accuracy}')
+    
+    # Compute and display permutation importance
+    result = permutation_importance(grid_search.best_estimator_, X_test_scaled, y_test, n_repeats=10, random_state=42)
+    importances = result.importances_mean
+    print("Feature Importances:")
+    for i, imp in enumerate(importances):
+        print(f"{X_train.columns[i]}: {imp:.3f}")
+        
+    # Visualize feature importances
+    sns.barplot(x=importances, y=X_train.columns)
+    plt.title('Feature Importance')
+    plt.xlabel('Importance')
+    plt.ylabel('Features')
+    plt.savefig('features importance 2.png')
     
 
     # feature_names = X_filtered.columns.tolist()
@@ -226,5 +243,5 @@ def grad_boost():
 
 
 logisitic_reg()
-ada_boost()
-grad_boost()
+# ada_boost()
+# grad_boost()
